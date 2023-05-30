@@ -29,7 +29,7 @@ for _ in range(LOOPS): # lap lai nhieu lan
         while len(ant.path) < len(tp.city): 
             for i in range(len(tp.city)):
                 rd = random.random()
-                if ant.visited[i] == False and rd <= tp.GetProbabilities(ant.GetLastCity(), i):
+                if ant.visited[i] == False and rd <= tp.Probabilities(ant.GetLastCity(), i):
                     ant.path.append(i)
                     ant.visited[i] = True
         

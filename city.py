@@ -15,7 +15,7 @@ class City:
         return self.pheromore[i][j]
     
     # trả về xác xuất con kiến đi từ i tới j trong khoảng 0 -> 1
-    def GetProbabilities(self, i : int, j : int) -> float:
+    def Probabilities(self, i : int, j : int) -> float:
         if i == j:
             return 0
         m = 0 
