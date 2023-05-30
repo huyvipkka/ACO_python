@@ -2,7 +2,7 @@ class City:
     
     def __init__(self) -> None:
         self.city = [] # ma trận khoảng cách các thành phố
-        self.pheromore = [] # ma trận mùi
+        self.pheromone = [] # ma trận mùi
         self.alpha = 1
         self.beta = 1
         
@@ -12,7 +12,7 @@ class City:
     
     # trả về mùi giữa i và j
     def GetPher(self, i : int, j : int) -> float:
-        return self.pheromore[i][j]
+        return self.pheromone[i][j]
     
     # trả về xác xuất con kiến đi từ i tới j trong khoảng 0 -> 1
     def Probabilities(self, i : int, j : int) -> float:

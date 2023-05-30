@@ -39,13 +39,13 @@ for _ in range(LOOPS): # lap lai nhieu lan
             bestDistance = ant.totalDistance
             bestPath = ant.path
             
-    #cập nhật lại ma trận mùi (pheromore) do đàn kiến vừa tạo và reset
+    #cập nhật lại ma trận mùi (pheromone) do đàn kiến vừa tạo và reset
     for ant in ants:
         for i in range(len(ant.path)-1):
             begin = ant.path[i]
             end = ant.path[i+1]
-            tp.pheromore[begin][end] *= 1 - P
-            tp.pheromore[begin][end] += Q/ant.totalDistance
+            tp.pheromone[begin][end] *= 1 - P
+            tp.pheromone[begin][end] += Q/ant.totalDistance
         ant.Reset()
 
 print(bestPath)
