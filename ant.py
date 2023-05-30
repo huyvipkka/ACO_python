@@ -4,7 +4,7 @@ class Ant:
         self.path = [] # mảng đường đi của kiến
         self.lenghtcity = lengthCity
         self.visited = [False for _ in range(lengthCity)] # mảng đánh dấu địa điểm đã đi qua của kiến
-        self.totalDistance = 0
+        self.totalDistance = 0 # Tổng khoảng cách con kiến đã đi dc
         
     #trả về thành phố cuối cùng con kiến đi qua
     def GetLastCity(self) -> int:
@@ -19,7 +19,7 @@ class Ant:
             t += DistanceMatrix[start][end]
         return t
     
-    # Reset lai con kien
+    # Reset lại con kiến
     def Reset(self) -> None:
         self.path = []
         self.visited = [False for _ in range(self.lenghtcity)]

@@ -3,13 +3,13 @@ from ant import *
 from fileTest import *
 import random
 
-LOOPS = 100 # so lan lap
+LOOPS = 100 # số lần lặp
 P = 0.5 # hệ số bay hơi [0, 1]
 Q = 1 # hệ số cường độ pheromone
-bestDistance = 100 # khoang cach toi uu ban dau
-bestPath = [] #mang chua vet toi uu nhat
+bestDistance = 100 # Khoảng cách tôi ưu ban đầu
+bestPath = [] # Mảng chứa đường đi tối ưu nhất
 
-# khoi tao ma tran cac thanh pho
+# Khởi tạo ma trận khoảng cách giữa các thành phố và mùi
 tp = City()
 tp.city =  matrix4x4_1
 tp.pheromore = pher4x4
@@ -17,10 +17,11 @@ tp.pheromore = pher4x4
 # tao dan kien 10 con
 ants = [Ant(len(tp.city)) for _ in range(10)]
 
-for _ in range(LOOPS): # lap lai nhieu lan
-    # Thả đàn kiếm cho kiến tìm đường
+# Lặp lại nhiều lần
+for _ in range(LOOPS):
+    # Thả đàn kiếm tìm đường
     for ant in ants: 
-        # moi con kien bat dau tai 1 noi ngau nhien
+        # Tạo điểm xuất phát ngẫu nhiên cho con kiến
         start = random.randint(0, len(tp.city)-1)
         ant.path.append(start)
         ant.visited[start] = True
@@ -33,7 +34,7 @@ for _ in range(LOOPS): # lap lai nhieu lan
                     ant.path.append(i)
                     ant.visited[i] = True
         
-        # cap nhap khoang cach moi theo duong di con kien vua tim dc
+        # Cập nhật lại khoảng cách con kiến vừa tìm được
         ant.totalDistance = ant.GetDistanceTraveled(tp.city)
         if bestDistance > ant.totalDistance:
             bestDistance = ant.totalDistance
