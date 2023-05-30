@@ -1,5 +1,6 @@
 from city import *
 from ant import *
+from fileTest import *
 import random
 
 LOOPS = 100 # so lan lap
@@ -10,14 +11,8 @@ bestPath = [] #mang chua vet toi uu nhat
 
 # khoi tao ma tran cac thanh pho
 tp = City()
-tp.city =  [[0 , 1, 15, 4],
-            [1 , 0, 4 , 8],
-            [15, 4, 0 , 5],
-            [4 , 8, 5 , 0]]
-tp.pheromore = [[0, 1, 1, 1],
-                [1, 0, 1, 1],
-                [1, 1, 0, 1],
-                [1, 1, 1, 0]]
+tp.city =  matrix4x4_1
+tp.pheromore = pher4x4
 
 # tao dan kien 10 con
 ants = [Ant(len(tp.city)) for _ in range(10)]
