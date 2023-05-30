@@ -11,7 +11,7 @@ class Ant:
         return self.path[-1]
     
     # trả vê tổng khoảng cách con kiến đã đi qua
-    def GetDistanceTraveled(self, DistanceMatrix : list) -> float:
+    def DistanceTraveled(self, DistanceMatrix : list) -> float:
         t = 0 
         for i in range(len(self.path)-1):
             start = self.path[i]
