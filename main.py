@@ -17,7 +17,8 @@ tp.pheromore = pher4x4
 # tao dan kien 10 con
 ants = [Ant(len(tp.city)) for _ in range(10)]
 
-for _ in range(LOOPS): # lap qua tung lan lap
+for _ in range(LOOPS): # lap lai nhieu lan
+    # Thả đàn kiếm cho kiến tìm đường
     for ant in ants: 
         # moi con kien bat dau tai 1 noi ngau nhien
         start = random.randint(0, len(tp.city)-1)
@@ -31,7 +32,7 @@ for _ in range(LOOPS): # lap qua tung lan lap
                 if ant.visited[i] == False and rd <= tp.GetProbabilities(ant.GetLastCity(), i):
                     ant.path.append(i)
                     ant.visited[i] = True
-                    
+        
         # cap nhap khoang cach moi theo duong di con kien vua tim dc
         ant.totalDistance = ant.GetDistanceTraveled(tp.city)
         if bestDistance > ant.totalDistance:
