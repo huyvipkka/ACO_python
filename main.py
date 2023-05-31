@@ -4,8 +4,8 @@ import random
 
 n = 3 # số lần test bài toán
 nbOfCity = 10 # số lượng thành phố
-nbOfAnt = 10 # số lượng kiến
-LOOPS = 100 # số lần lặp thuật toán
+nbOfAnt = 50 # số lượng kiến
+LOOPS = 50 # số lần lặp thuật toán
 P = 0.5 # hệ số bay hơi [0, 1]
 Q = 1 # hệ số cường độ pheromone
 bestDistance = 0 # Khoảng cách tôi ưu ban đầu
@@ -41,7 +41,6 @@ for _ in range(n):
             start = random.randint(0, nbOfCity-1)
             ant.path.append(start)
             ant.visited[start] = True
-            
             # Lựa chọn đường đi của con kiến dựa trên xác xuất
             while len(ant.path) < nbOfCity: 
                 for i in range(nbOfCity):
@@ -51,10 +50,10 @@ for _ in range(n):
                         ant.visited[i] = True
             # Thêm điểm ban đầu để hoàn thành chu trình
             ant.path.append(start)
-            
+
         for ant in ants:
             ant.totalDistance = ant.DistanceTraveled(tp.city)
-            #cập nhật lại ma trận mùi (pheromone) do đàn kiến vừa tạo và reset
+            #cập nhật lại ma trận mùi (pheromone) do đàn kiến vừa tạo
             for i in range(len(ant.path)-1):
                 begin = ant.path[i]
                 end = ant.path[i+1]
@@ -67,6 +66,7 @@ for _ in range(n):
             elif bestDistance > ant.totalDistance:
                 bestDistance = ant.totalDistance
                 bestPath = ant.path
+            #Reset lại đàn kiến và đi tới lần lặp tiếp theo
             ant.Reset()
     #in kết quả của lần test thứ n
     print(bestPath, end="\t")
