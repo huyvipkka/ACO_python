@@ -4,7 +4,7 @@ import random
 
 n = 3 # số lần test bài toán
 nbOfCity = 10 # số lượng thành phố
-nbOfAnt = 20 # số lượng kiến
+nbOfAnt = 10 # số lượng kiến
 LOOPS = 100 # số lần lặp thuật toán
 P = 0.5 # hệ số bay hơi [0, 1]
 Q = 1 # hệ số cường độ pheromone
@@ -13,7 +13,15 @@ bestPath = [] # Mảng chứa đường đi tối ưu nhất
 
 # Khởi tạo ma trận khoảng cách giữa các thành phố và mùi
 tp = City()
-tp.city =  [[0 if i == j else random.randint(1, 10) for j in range(nbOfCity)] for i in range(nbOfCity)]
+tp.city =  [[0 for _ in range(nbOfCity)] for _ in range(nbOfCity)]
+for i in range(nbOfCity):
+    for j in range(nbOfCity):
+        if i != j:
+            if j > i:
+                tp.city[i][j] = random.randint(1, 20)
+            else:
+                tp.city[i][j] = tp.city[j][i]
+
 tp.pheromone = [[1 if i != j else 0 for j in range(nbOfCity)] for i in range(nbOfCity)]
 # In thành phố random vừa tạo
 print("Thành phố vừa tạo")
