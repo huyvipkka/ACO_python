@@ -4,7 +4,8 @@ import random
 
 LOOPS = 100 # số lần lặp
 n = 3 # số lần chạy bài toán
-nbOfCity = 10 # số lượng thành phố
+nbOfCity = 20 # số lượng thành phố
+nbOfAnt = 10 # số lượng kiến
 P = 0.5 # hệ số bay hơi [0, 1]
 Q = 1 # hệ số cường độ pheromone
 bestDistance = 0 # Khoảng cách tôi ưu ban đầu
@@ -19,7 +20,7 @@ print("Thành phố vừa tạo")
 for i in tp.city:
     print(i)
 # tao dan kien 10 con
-ants = [Ant(nbOfCity) for _ in range(10)]
+ants = [Ant(nbOfCity) for _ in range(nbOfAnt)]
 
 
 print(f"Chu trình hamilton ngắn nhất của {n} lần test")
