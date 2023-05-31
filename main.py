@@ -3,26 +3,23 @@ from ant import *
 import random
 
 n = 3 # số lần test bài toán
-nbOfCity = 10 # số lượng thành phố
+nbOfCity = 15 # số lượng thành phố
 nbOfAnt = 50 # số lượng kiến
 LOOPS = 50 # số lần lặp thuật toán
-P = 0.5 # hệ số bay hơi [0, 1]
-Q = 1 # hệ số cường độ pheromone
 bestDistance = 0 # Khoảng cách tôi ưu ban đầu
 bestPath = [] # Mảng chứa đường đi tối ưu nhất
 
-# Khởi tạo ma trận khoảng cách giữa các thành phố và mùi
+# Khởi tạo ma trận khoảng cách giữa các thành phố
 tp = City()
 tp.city =  [[0 for _ in range(nbOfCity)] for _ in range(nbOfCity)]
 for i in range(nbOfCity):
     for j in range(nbOfCity):
         if i != j:
             if j > i:
-                tp.city[i][j] = random.randint(1, 20)
+                tp.city[i][j] = random.randint(1, 30)
             else:
                 tp.city[i][j] = tp.city[j][i]
 
-tp.pheromone = [[1 if i != j else 0 for j in range(nbOfCity)] for i in range(nbOfCity)]
 # In thành phố random vừa tạo
 print("Thành phố vừa tạo")
 for i in tp.city:
@@ -33,6 +30,8 @@ ants = [Ant(nbOfCity) for _ in range(nbOfAnt)]
 print(f"Chu trình hamilton ngắn nhất của {n} lần test")
 # lặp n lần để test kết quả
 for _ in range(n):
+    # Khởi tạo lại ma trận pheromone sau mỗi lần test
+    tp.pheromone = [[1 if i != j else 0 for j in range(nbOfCity)] for i in range(nbOfCity)]
     # vòng lặp chính của thuật toán
     for loop in range(LOOPS):
         # Thả đàn kiếm tìm đường
@@ -50,15 +49,11 @@ for _ in range(n):
                         ant.visited[i] = True
             # Thêm điểm ban đầu để hoàn thành chu trình
             ant.path.append(start)
+            ant.totalDistance = ant.DistanceTraveled(tp.city)
 
         for ant in ants:
-            ant.totalDistance = ant.DistanceTraveled(tp.city)
             #cập nhật lại ma trận mùi (pheromone) do đàn kiến vừa tạo
-            for i in range(len(ant.path)-1):
-                begin = ant.path[i]
-                end = ant.path[i+1]
-                tp.pheromone[begin][end] *= 1 - P
-                tp.pheromone[begin][end] += Q/ant.totalDistance
+            tp.UpdatePheromone(ant)
             # Cập nhật lại khoảng cách con kiến vừa tìm được
             if loop == 0:
                 bestDistance = ant.totalDistance
