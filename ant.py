@@ -6,7 +6,7 @@ class Ant:
         self.totalDistance = 0 # Tổng khoảng cách con kiến đã đi dc
         
     #trả về thành phố cuối cùng con kiến đi qua
-    def GetLastCity(self) -> int:
+    def LastCity(self) -> int:
         return self.path[-1]
     
     # trả vê tổng khoảng cách con kiến đã đi qua
