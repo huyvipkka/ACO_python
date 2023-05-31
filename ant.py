@@ -22,3 +22,4 @@ class Ant:
     def Reset(self) -> None:
         self.path = []
         self.visited = [False for _ in range(self.lenghtcity)]
+        self.totalDistance = 0
