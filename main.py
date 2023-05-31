@@ -4,8 +4,8 @@ import random
 
 LOOPS = 100 # số lần lặp
 n = 3 # số lần chạy bài toán
-nbOfCity = 20 # số lượng thành phố
-nbOfAnt = 10 # số lượng kiến
+nbOfCity = 10 # số lượng thành phố
+nbOfAnt = 20 # số lượng kiến
 P = 0.5 # hệ số bay hơi [0, 1]
 Q = 1 # hệ số cường độ pheromone
 bestDistance = 0 # Khoảng cách tôi ưu ban đầu
