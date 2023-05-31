@@ -1,5 +1,4 @@
-class Ant:
-    
+class Ant:   
     def __init__(self, lengthCity : int) -> None:
         self.path = [] # mảng đường đi của kiến
         self.lenghtcity = lengthCity

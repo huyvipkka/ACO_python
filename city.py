@@ -1,5 +1,4 @@
 class City:
-    
     def __init__(self) -> None:
         self.city = [] # ma trận khoảng cách các thành phố
         self.pheromone = [] # ma trận mùi

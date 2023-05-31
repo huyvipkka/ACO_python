@@ -2,10 +2,10 @@ from city import *
 from ant import *
 import random
 
-LOOPS = 100 # số lần lặp
-n = 3 # số lần chạy bài toán
+n = 3 # số lần test bài toán
 nbOfCity = 10 # số lượng thành phố
 nbOfAnt = 20 # số lượng kiến
+LOOPS = 100 # số lần lặp thuật toán
 P = 0.5 # hệ số bay hơi [0, 1]
 Q = 1 # hệ số cường độ pheromone
 bestDistance = 0 # Khoảng cách tôi ưu ban đầu
@@ -19,9 +19,8 @@ tp.pheromone = [[1 if i != j else 0 for j in range(nbOfCity)] for i in range(nbO
 print("Thành phố vừa tạo")
 for i in tp.city:
     print(i)
-# tao dan kien 10 con
+# Tạo đàn kiến
 ants = [Ant(nbOfCity) for _ in range(nbOfAnt)]
-
 
 print(f"Chu trình hamilton ngắn nhất của {n} lần test")
 # lặp n lần để test kết quả
