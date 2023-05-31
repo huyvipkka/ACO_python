@@ -52,22 +52,21 @@ for _ in range(n):
             # Thêm điểm ban đầu để hoàn thành chu trình
             ant.path.append(start)
             
-            # Cập nhật lại khoảng cách con kiến vừa tìm được
+        for ant in ants:
             ant.totalDistance = ant.DistanceTraveled(tp.city)
+            #cập nhật lại ma trận mùi (pheromone) do đàn kiến vừa tạo và reset
+            for i in range(len(ant.path)-1):
+                begin = ant.path[i]
+                end = ant.path[i+1]
+                tp.pheromone[begin][end] *= 1 - P
+                tp.pheromone[begin][end] += Q/ant.totalDistance
+            # Cập nhật lại khoảng cách con kiến vừa tìm được
             if loop == 0:
                 bestDistance = ant.totalDistance
                 bestPath = ant.path
             elif bestDistance > ant.totalDistance:
                 bestDistance = ant.totalDistance
                 bestPath = ant.path
-                
-        #cập nhật lại ma trận mùi (pheromone) do đàn kiến vừa tạo và reset
-        for ant in ants:
-            for i in range(len(ant.path)-1):
-                begin = ant.path[i]
-                end = ant.path[i+1]
-                tp.pheromone[begin][end] *= 1 - P
-                tp.pheromone[begin][end] += Q/ant.totalDistance
             ant.Reset()
     #in kết quả của lần test thứ n
     print(bestPath, end="\t")
