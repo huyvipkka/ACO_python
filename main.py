@@ -2,10 +2,10 @@ from city import *
 from ant import *
 import random
 
-n = 3 # số lần test bài toán
-nbOfCity = 15 # số lượng thành phố
-nbOfAnt = 50 # số lượng kiến
-LOOPS = 50 # số lần lặp thuật toán
+n = 5 # số lần test bài toán
+nbOfCity = 15 # số lượng thành phố      
+nbOfAnt = 75 # số lượng kiến
+LOOPS = 75 # số lần lặp thuật toán
 bestDistance = 0 # Khoảng cách tôi ưu ban đầu
 bestPath = [] # Mảng chứa đường đi tối ưu nhất
 
@@ -44,7 +44,7 @@ for _ in range(n):
             while len(ant.path) < nbOfCity: 
                 for i in range(nbOfCity):
                     rd = random.random()
-                    if ant.visited[i] == False and rd <= tp.Probabilities(ant.GetLastCity(), i):
+                    if ant.visited[i] == False and rd <= tp.Probabilities(ant.LastCity(), i):
                         ant.path.append(i)
                         ant.visited[i] = True
             # Thêm điểm ban đầu để hoàn thành chu trình
