@@ -42,8 +42,7 @@ for _ in range(n):
             # Lựa chọn đường đi của con kiến dựa trên xác xuất
             while len(ant.path) < nbOfCity: 
                 for i in range(nbOfCity):
-                    rd = random.random()
-                    if i not in ant.path and rd <= tp.Probabilities(ant.LastCity(), i):
+                    if i not in ant.path and random.random() <= tp.Probabilities(ant.LastCity(), i):
                         ant.path.append(i)
             # Thêm điểm ban đầu để hoàn thành chu trình
             ant.path.append(start)
