@@ -4,8 +4,8 @@ import random
 
 n = 5 # số lần test bài toán
 nbOfCity = 10 # số lượng thành phố      
-nbOfAnt = 40 # số lượng kiến
-LOOPS = 40 # số lần lặp thuật toán
+nbOfAnt = 50 # số lượng kiến
+LOOPS = 50 # số lần lặp thuật toán
 bestDistance = 0 # Khoảng cách tôi ưu ban đầu
 bestPath = [] # Mảng chứa đường đi tối ưu nhất
 
@@ -25,7 +25,7 @@ print("Thành phố vừa tạo")
 for i in tp.city:
     print(i)
 # Tạo đàn kiến
-ants = [Ant(nbOfCity) for _ in range(nbOfAnt)]
+ants = [Ant() for _ in range(nbOfAnt)]
 
 print(f"Chu trình hamilton ngắn nhất của {n} lần test")
 # lặp n lần để test kết quả
@@ -39,14 +39,12 @@ for _ in range(n):
             # Tạo điểm xuất phát ngẫu nhiên cho con kiến
             start = random.randint(0, nbOfCity-1)
             ant.path.append(start)
-            ant.visited[start] = True
             # Lựa chọn đường đi của con kiến dựa trên xác xuất
             while len(ant.path) < nbOfCity: 
                 for i in range(nbOfCity):
                     rd = random.random()
-                    if ant.visited[i] == False and rd <= tp.Probabilities(ant.LastCity(), i):
+                    if i not in ant.path and rd <= tp.Probabilities(ant.LastCity(), i):
                         ant.path.append(i)
-                        ant.visited[i] = True
             # Thêm điểm ban đầu để hoàn thành chu trình
             ant.path.append(start)
             ant.totalDistance = ant.DistanceTraveled(tp.city)

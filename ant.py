@@ -1,8 +1,6 @@
 class Ant:   
-    def __init__(self, lengthCity : int) -> None:
+    def __init__(self) -> None:
         self.path = [] # mảng đường đi của kiến
-        self.lenghtcity = lengthCity
-        self.visited = [False for _ in range(lengthCity)] # mảng đánh dấu địa điểm đã đi qua của kiến
         self.totalDistance = 0 # Tổng khoảng cách con kiến đã đi dc
         
     #trả về thành phố cuối cùng con kiến đi qua
@@ -21,5 +19,4 @@ class Ant:
     # Reset lại con kiến
     def Reset(self) -> None:
         self.path = []
-        self.visited = [False for _ in range(self.lenghtcity)]
         self.totalDistance = 0
