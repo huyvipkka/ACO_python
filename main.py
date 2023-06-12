@@ -4,8 +4,8 @@ import random
 
 n = 5 # số lần test bài toán
 nbOfCity = 10 # số lượng thành phố      
-nbOfAnt = 50 # số lượng kiến
-LOOPS = 50 # số lần lặp thuật toán
+nbOfAnt = 30 # số lượng kiến
+LOOPS = 30 # số lần lặp thuật toán
 bestDistance = 0 # Khoảng cách tôi ưu ban đầu
 bestPath = [] # Mảng chứa đường đi tối ưu nhất
 
